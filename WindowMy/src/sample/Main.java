@@ -37,6 +37,8 @@ public class Main extends Application {
         MenuItem delete = new MenuItem("Delete");
         menu.getItems().add(delete);
 
+        //надо написать класс котрый читает из файла в лист
+
         //Actions
         addItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
