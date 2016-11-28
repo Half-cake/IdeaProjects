@@ -1,5 +1,7 @@
 package sample;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,14 +25,17 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 300, 300));
 
         //controls: Лист + кнопка + текстовое поле
+
         Button addItem = new Button("Add Item");
         ListView<String> myToDo = new ListView<String>();
         ObservableList<String> data = FXCollections.observableArrayList();
+
 
         myToDo.setPrefWidth(300);
         myToDo.setPrefHeight(100);
 
         TextField stringForAdd = new TextField();
+
 
         //Context menu for Elements
         ContextMenu menu = new ContextMenu();
@@ -41,9 +46,13 @@ public class Main extends Application {
         addItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                data.add(stringForAdd.getText());
+                ItemToDO item = new ItemToDO(stringForAdd.getText());
+                data.add(item.getTitle());
                 myToDo.setItems(data);
-                }
+
+                //Gson gson = new Gson();
+                //gson.toJson(item.getTitle());
+            }
         });
 
         myToDo.setOnMouseClicked(event -> {
