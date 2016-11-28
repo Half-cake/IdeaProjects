@@ -34,7 +34,7 @@ public class Main extends Application {
         myToDo.setPrefWidth(300);
         myToDo.setPrefHeight(100);
 
-        TextField stringForAdd = new TextField();
+        TextField stringForAdding = new TextField();
 
 
         //Context menu for Elements
@@ -46,9 +46,10 @@ public class Main extends Application {
         addItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ItemToDO item = new ItemToDO(stringForAdd.getText());
-                data.add(item.getTitle());
+                ItemToDO item = new ItemToDO(stringForAdding.getText());
+                data.add(item.title);
                 myToDo.setItems(data);
+                item.writeToFile(item.title);
 
                 //Gson gson = new Gson();
                 //gson.toJson(item.getTitle());
@@ -72,7 +73,7 @@ public class Main extends Application {
         GridPane grigForElements = new GridPane();
         grigForElements.setPrefSize(300, 300);
         grigForElements.addRow(0,myToDo);
-        grigForElements.addRow(1, stringForAdd);
+        grigForElements.addRow(1, stringForAdding);
         grigForElements.addRow(2, addItem);
         Scene scene = new Scene(grigForElements);
         primaryStage.setScene(scene);
