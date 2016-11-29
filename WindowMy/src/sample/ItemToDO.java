@@ -26,12 +26,25 @@ public class ItemToDO {
         this.status = status;
     }
 
-    public void writeToFile(Object o){
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public static void writeToFile(Object o){
         Gson gson = new Gson();
-        String json = gson.toJson(o);
-        try {
-            FileWriter writer = new FileWriter("C:\\Users\\Панда\\Documents\\GitHub\\IdeaProjects\\WindowMy\\src\\todo.json");
-            writer.append(json);
+        try
+        {
+            FileWriter writer = new FileWriter("C:\\Users\\Aleksey Zhulanov\\IdeaProjects\\WindowMy\\src\\todo.json", true);
+            String json = gson.toJson(o);
+            writer.write(json+"\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
