@@ -30,6 +30,7 @@ public class Controller implements Initializable {
 
     @FXML
     private ContextMenu cMenuDeleteItem;
+    private MenuItem deleteItem = new MenuItem("Delete");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {};
@@ -52,9 +53,9 @@ public class Controller implements Initializable {
         stringForAdding.clear();
     }
     public void setOnMouseClicked(MouseEvent event){
-        cMenuDeleteItem.setOnAction();
-        myToDo.getItems().remove();
-        //setContextMenu(cMenuDeleteItem);
-
+        deleteItem.setOnAction(event1 -> {
+                    myToDo.getItems().remove(myToDo.getFocusModel().getFocusedIndex());
+                }
+        );
     }
 }
