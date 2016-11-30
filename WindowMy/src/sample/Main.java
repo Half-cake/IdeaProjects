@@ -29,6 +29,7 @@ public class Main extends Application {
         addItem.setDefaultButton(true);
         RadioButton setStatusRadioButton = new RadioButton("Important.");
         TextField stringForAdding = new TextField();
+
         //controls
 
         ListView<String> myToDo = new ListView<String>();
