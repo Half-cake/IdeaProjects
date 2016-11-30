@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="450" maxWidth="300" minHeight="400" minWidth="300" prefHeight="450.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <ListView id="myToDoList" fx:id="myToDo" prefHeight="350.0" prefWidth="300.0" style="-fx-background-color: D2C8CE;">
+         <contextMenu>
+            <ContextMenu fx:id="cMenuDeleteItem" onAction="#setOnMouseClicked">
+              <items>
+                <MenuItem id="Delete" fx:id="Delete" mnemonicParsing="false" onAction="#setOnMouseClicked" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </ListView>
+      <TextField id="stringForAdding" fx:id="stringForAdding" layoutY="350.0" prefHeight="25.0" prefWidth="230.0" />
+      <Button id="addItem" fx:id="addItem" layoutX="230.0" layoutY="349.0" mnemonicParsing="false" onAction="#setAddItem" prefHeight="25.0" prefWidth="70.0" text="Add Item" />
+      <RadioButton id="setStatusRadioButton" fx:id="setStatusRadioButton" layoutX="14.0" layoutY="388.0" mnemonicParsing="false" text="Important!" />
+   </children>
+</AnchorPane>
