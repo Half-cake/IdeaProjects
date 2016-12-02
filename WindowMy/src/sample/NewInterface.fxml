@@ -14,7 +14,7 @@
          <contextMenu>
             <ContextMenu fx:id="cMenuDeleteItem" onAction="#setOnMouseClicked">
               <items>
-                <MenuItem id="Delete" fx:id="Delete" mnemonicParsing="false" onAction="#setOnMouseClicked" text="Delete" />
+                <MenuItem id="Delete" fx:id="Delete" mnemonicParsing="false" text="Delete" />
               </items>
             </ContextMenu>
          </contextMenu>
