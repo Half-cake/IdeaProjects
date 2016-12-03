@@ -14,6 +14,8 @@ public class Main extends Application {
         primaryStage.setTitle("My To-Do List");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+
     }
 
 

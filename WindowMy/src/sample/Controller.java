@@ -1,6 +1,8 @@
 package sample;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.collections.ObservableList;
 import javafx.collections.ArrayChangeListener;
 import javafx.collections.FXCollections;
@@ -30,19 +32,28 @@ public class Controller implements Initializable {
 
     @FXML
     private ContextMenu cMenuDeleteItem;
+    private MenuItem deleteItem = new MenuItem("Delete");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {};
 
 
-    public void setAddItem(ActionEvent event){
-        ObservableList<String> data = FXCollections.observableArrayList();
+     public void fullListView() throws Exception {
+         ListView<Object> incomingList = new ListView<>();
+         incomingList = ItemToDO.readFromFile();
 
+     }
+
+    public void setAddItem(ActionEvent event) throws Exception {
+        ObservableList<String> data = FXCollections.observableArrayList();
         String title = stringForAdding.getText();
         String status = setStatusRadioButton.isSelected() ? "Important":"Without";
-        ItemToDO oneItem = new ItemToDO(title, status);
+        Date time = new Date();
+        long timeStamp = time.getTime();
+
+        ItemToDO oneItem = new ItemToDO(title, status, timeStamp);
         //Добавляем в Обсерв лист
-        data.add(oneItem.title);
+        data.add(oneItem.getTitle());
         //Добавляем из ОбсервЛиста в основной лист
         myToDo.getItems().addAll(data);
 
@@ -52,9 +63,10 @@ public class Controller implements Initializable {
         stringForAdding.clear();
     }
     public void setOnMouseClicked(MouseEvent event){
-        cMenuDeleteItem.setOnAction();
-        myToDo.getItems().remove();
-        //setContextMenu(cMenuDeleteItem);
+        deleteItem.setOnAction(event1 -> {
+            myToDo.getItems().remove(myToDo.getSelectionModel().getSelectedIndex());
+            System.out.println(myToDo.getSelectionModel().getSelectedIndex());}
 
+        );
     }
 }
