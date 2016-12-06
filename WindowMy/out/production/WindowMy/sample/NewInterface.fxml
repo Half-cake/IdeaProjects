@@ -10,17 +10,17 @@
 
 <AnchorPane maxHeight="450" maxWidth="300" minHeight="400" minWidth="300" prefHeight="450.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ListView id="myToDoList" fx:id="myToDo" prefHeight="350.0" prefWidth="300.0">
+      <ListView id="myToDoList" fx:id="myToDo" onEditStart="#fullListView" prefHeight="350.0" prefWidth="300.0">
          <contextMenu>
-            <ContextMenu fx:id="cMenuDeleteItem" onAction="#setOnMouseClicked">
+            <ContextMenu fx:id="menu">
               <items>
-                <MenuItem id="Delete" fx:id="Delete" mnemonicParsing="false" text="Delete" />
+                <MenuItem id="Delete" fx:id="Delete" mnemonicParsing="false" onAction="#deleteItemFromList" text="Delete" />
               </items>
             </ContextMenu>
          </contextMenu>
       </ListView>
       <TextField id="stringForAdding" fx:id="stringForAdding" layoutY="350.0" prefHeight="25.0" prefWidth="230.0" />
-      <Button id="addItem" fx:id="addItem" layoutX="230.0" layoutY="349.0" mnemonicParsing="false" onAction="#setAddItem" prefHeight="25.0" prefWidth="70.0" text="Add Item" />
+      <Button id="addItem" fx:id="addItem" layoutX="230.0" layoutY="349.0" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="70.0" text="Add Item" />
       <RadioButton id="setStatusRadioButton" fx:id="setStatusRadioButton" layoutX="14.0" layoutY="388.0" mnemonicParsing="false" text="Important!" />
    </children>
 </AnchorPane>

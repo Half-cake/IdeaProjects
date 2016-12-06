@@ -21,8 +21,6 @@ public class ItemToDO {
     private String title;
     private String status;
     private long timeStamp;
-    Date createData;
-
 
     public ItemToDO(String title){
         this.title = title;
@@ -46,38 +44,4 @@ public class ItemToDO {
         this.status = status;
     }
 
-
-    public static void writeToFile(Object o) throws IOException {
-        Gson gson = new Gson();
-        File file = new File("todo.json");
-        if (!file.exists()) file.createNewFile();
-
-        try
-        {
-            FileWriter writer = new FileWriter(file.getAbsolutePath(), true);
-            String json = gson.toJson(o);
-            writer.write(json+"\n");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public static ListView readFromFile()throws Exception {
-        //Подключение gson
-        Gson gson = new Gson();
-        //Создаем лист для ипорта
-        ListView<ItemToDO> itemsForImport = new ListView<ItemToDO>();
-        //Находим файл с содержимым
-        FileReader file = new FileReader("todo.json");
-        //Сканер для содержимого
-        Scanner sc = new Scanner(file);
-
-        while (sc.hasNextLine()){
-            String fromFile = sc.nextLine();
-            ItemToDO itemToDO = gson.fromJson(fromFile, ItemToDO.class);
-            itemsForImport.getItems().addAll(itemToDO);
-        }
-
-    return itemsForImport;
-    }
 }
